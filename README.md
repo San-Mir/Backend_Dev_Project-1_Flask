@@ -2,6 +2,10 @@
 
 # The Curriculum
 
-- Intermediate Python
-- Databases 
+- IT Fundamentals
+- Basic & Intermediate Python
+- Database Development with PostgreSQL
+- Backend Development with Python & Django
+- RESTful API Development
+- Cloud Development using GCP & AWS
 
