@@ -7,4 +7,4 @@
 - Database Development with PostgreSQL
 - Backend Development with Python & Django
 - RESTful API Development
-- Cloud Computing using GCP 
+- Cloud Computing Using GCP 
