@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customer Details - Best CRM System</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+        font-family: "Arial", sans-serif;
+        background-color: #f4f4f9;
+        color: #333;
+      }
+      header h1 {
+        text-align: center;
+        width: 100%;
+        background-color: #007bff;
+        color: white;
+        padding: 20px 0;
+        margin: 0;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      nav {
+        margin: 20px;
+      }
+      nav a {
+        margin: 0 10px;
+        text-decoration: none;
+        color: #007bff;
+        font-weight: bold;
+      }
+      nav a:hover {
+        text-decoration: underline;
+      }
+      .content {
+        width: 50.44776%;
+        text-align: left;
+        padding: 20px;
+        margin: 20px 0;
+        background: white;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      table,
+      th,
+      td {
+        border: 1px solid #ccc;
+      }
+      th,
+      td {
+        padding: 10px;
+        text-align: left;
+      }
+      th {
+        background-color: #007bff;
+        color: white;
+      }
+      h2 {
+        color: #007bff;
+      }
+      form.delete-form {
+        display: inline;
+      }
+      button.delete-btn {
+        padding: 5px 10px;
+        font-size: 14px;
+        cursor: pointer;
+        background-color: #ff0000;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        margin-left: 10px;
+      }
+      button.delete-btn:hover {
+        background-color: #cc0000;
+      }
+      img {
+        width: 50%;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Customer Details</h1>
+    </header>
+    <nav>
+      <a href="{{ url_for('home') }}">Home</a>
+      <a href="{{ url_for('customer_details') }}">Customer Details</a>
+    </nav>
+
+    <main class="content">
+      <h2>Customer Information</h2>
+      {% if customers %}
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Message</th>
+          <th>Action</th>
+        </tr>
+        {% for customer in customers %}
+        <tr>
+          <td>{{ customer['name'] }}</td>
+          <td>{{ customer['email'] }}</td>
+          <td>{{ customer['phone'] }}</td>
+          <td>{{ customer['message'] }}</td>
+          <td>
+            <form
+              class="delete-form"
+              action="{{ url_for('delete', index=loop.index0) }}"
+              method="post"
+            >
+              <button type="submit" class="delete-btn">Delete</button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+      {% else %}
+      <p>No customer information submitted yet.</p>
+      {% endif %}
+    </main>
+  </body>
+</html>
